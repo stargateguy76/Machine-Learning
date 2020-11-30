@@ -7,20 +7,20 @@ while True:
     assert metal in {"gold", "platnium"}
 
     startTrain = input("Enter a start date for the training data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]')
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', startTrain)
     assert int(startTrain[0:4]) in range(1991, 2004)
     
     endTrain = input("Enter an end date for the training data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]')
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', endTrain)
     assert int(startTrain[0:4]) in range(1991, 2004)
 
-    startTrain = input("Enter a start date for the training data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]')
-    assert int(startTrain[0:4]) in range(1991, 2004)
+    startPred = input("Enter a start date for the prediction data interval (YYYY-MM-DD): ")
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', startPred)
+    assert int(startTrain[0:4]) in range(1991, 2008)
 
-    startTrain = input("Enter a start date for the training data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]')
-    assert int(startTrain[0:4]) in range(1991, 2004)
+    endPred = input("Enter an end date for the prediction data interval (YYYY-MM-DD): ")
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', endPred)
+    assert int(startTrain[0:4]) in range(1991, 2008)
 
 
     print('Loading...')

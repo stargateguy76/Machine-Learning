@@ -7,19 +7,19 @@ while True:
     assert metal in {"gold", "platnium"}
 
     startTrain = input("Enter a start date for the training data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', startTrain)
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', startTrain) is not None
     assert int(startTrain[0:4]) in range(1991, 2004)
     
     endTrain = input("Enter an end date for the training data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', endTrain)
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', endTrain) is not None
     assert int(startTrain[0:4]) in range(1991, 2004)
 
     startPred = input("Enter a start date for the prediction data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', startPred)
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', startPred) is not None
     assert int(startTrain[0:4]) in range(1991, 2008)
 
     endPred = input("Enter an end date for the prediction data interval (YYYY-MM-DD): ")
-    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', endPred)
+    assert re.match('[0-9][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]', endPred) is not None
     assert int(startTrain[0:4]) in range(1991, 2008)
 
 
@@ -122,12 +122,12 @@ while True:
     plt.plot(dates,y_test)
     plt.plot(dates,y_linear)
     plt.plot(dates,y_tensor)
-    plt.show
+    plt.show()
 
 
     plt.scatter(X_test,y_test, s = 5)
     plt.plot(X_test,y_linear)
-    plt.show
+    plt.show()
 
     plt.scatter(X_test,y_test, s = 5)
     plt.plot(X_test,y_tensor)

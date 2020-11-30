@@ -83,6 +83,8 @@ while True:
         Xten=metals.iloc[startTrain2:endTrain2,[0,1]].values
         yten=metals.iloc[startTrain2:endTrain2,0].values
         x_tentest= metals.iloc[startPred2:endPred2,[0,1]].values
+        metal1= 'Price of gold'
+        metal2 = ' Price of platnium'
 
     else:
         y_train=metals.iloc[startTrain2:endTrain2,1].values[:,np.newaxis]
@@ -91,14 +93,22 @@ while True:
         y_test = metals.iloc[startPred2:endPred2,1].values[:,np.newaxis]
         X_test = metals.iloc[startPred2:endPred2,0].values[:,np.newaxis]
 
-        yten=metals.iloc[startTrain2:endTrain2,[0,1]].values
-        Xten=metals.iloc[startTrain2:endTrain2,0].values
+        Xten=metals.iloc[startTrain2:endTrain2,[0,1]].values
+        yten=metals.iloc[startTrain2:endTrain2,1].values
         x_tentest= metals.iloc[startPred2:endPred2,[0,1]].values
+        metal2 = 'gold'
+        metal1 = ' platnium'
     
     # plot the training and test data 
+    fig, ax = plt.subplots()
+    plt.title('Prices of Metal Between each other (gold vs platnium)')
+    plt.xlabel(metal1)
+    plt.ylabel(metal2)
 
-    plt.scatter(X_train, y_train, s = 5)
-    plt.scatter(X_test,y_test, s= 5 )
+    ax.scatter(X_train, y_train, s = 5,label = 'Training Data')
+    ax.scatter(X_test,y_test, s= 5, label ='Prediction Data' )
+    ax.legend()
+
     plt.show()
 
     #Traing the linear model and the deep learning model
@@ -119,18 +129,28 @@ while True:
     dates = np.arange(startPred2,endPred2,1)
 
 
-    plt.plot(dates,y_test)
-    plt.plot(dates,y_linear)
-    plt.plot(dates,y_tensor)
+    fig = plt.figure()
+    plt.title('Prices of Metal Between Prediction Dates')
+    plt.xlabel('Days')
+    plt.ylabel('Closing Price (USD)')
+    p1, = plt.plot(dates,y_test)
+    p2, = plt.plot(dates,y_linear)
+    p3, = plt.plot(dates,y_tensor)
+    plt.legend([p1,p2,p3],['Acutal Prices','Linear Regression','Neural Net Regresesion'])
     plt.show()
 
-
+    plt.title('Gold vs Platnium showing Linear Regression')
+    plt.xlabel('Days')
+    plt.ylabel('Closing Price (USD)')
     plt.scatter(X_test,y_test, s = 5)
     plt.plot(X_test,y_linear)
     plt.show()
 
+    plt.title('Gold vs Platnium showing Neual Net Regression')
+    plt.xlabel('Days')
+    plt.ylabel('Closing Price (USD)')
     plt.scatter(X_test,y_test, s = 5)
-    plt.plot(X_test,y_tensor)
+    plt.scatter(X_test,y_tensor, s = 5)
     plt.show()
 
 
